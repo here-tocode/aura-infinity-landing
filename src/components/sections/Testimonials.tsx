@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "AI Labs shipped our landing page in five days and tripled our trial signups. Insane velocity.",
+    quote: "Aura Infinity Labs shipped our landing page in five days and tripled our trial signups. Insane velocity.",
     name: "Maya Chen",
     role: "Founder, Northwind AI",
   },
