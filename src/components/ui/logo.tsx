@@ -29,9 +29,8 @@ export const Logo: React.FC<LogoProps> = ({
       >
         <defs>
           <linearGradient id="aiLabsGold" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#FFF6B0" />
-            <stop offset="50%" stopColor="#FFD700" />
-            <stop offset="100%" stopColor="#DAA520" />
+            <stop offset="0%" stopColor="#B8860B" />
+            <stop offset="100%" stopColor="#B8860B" />
           </linearGradient>
           <filter id="aiLabsGlow" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="1.4" result="blur" />
@@ -77,7 +76,7 @@ export const Logo: React.FC<LogoProps> = ({
           >
             Aura
           </span>
-          <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.42em] text-[#FFD700]/75">
+          <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.42em] text-[#B8860B]">
             Infinity&nbsp;Labs
           </span>
         </div>
