@@ -46,12 +46,12 @@ const fragmentShader = /* glsl */ `
       }
     }
 
-    // Map the three channel intensities into a warm gold palette.
-    vec3 bronze = vec3(0.45, 0.22, 0.04);   // deep warm
-    vec3 amber  = vec3(1.00, 0.65, 0.12);   // mid amber
-    vec3 honey  = vec3(1.00, 0.88, 0.50);   // bright highlight
+    // Map the three channel intensities into a cool blue palette.
+    vec3 deepBlue = vec3(0.04, 0.10, 0.45);   // deep navy
+    vec3 midBlue  = vec3(0.20, 0.45, 1.00);   // electric blue
+    vec3 sky      = vec3(0.55, 0.80, 1.00);   // bright sky highlight
 
-    vec3 col = bronze * ch.x + amber * ch.y + honey * ch.z;
+    vec3 col = deepBlue * ch.x + midBlue * ch.y + sky * ch.z;
     col *= intensity;
 
     gl_FragColor = vec4(col, 1.0);
