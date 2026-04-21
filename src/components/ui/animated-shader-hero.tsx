@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { ShaderAnimation } from "@/components/ui/shader-lines";
 
 interface HeroProps {
@@ -11,48 +11,6 @@ interface HeroProps {
   };
   className?: string;
 }
-
-const goldShader = `#version 300 es
-precision highp float;
-out vec4 O;
-uniform vec2 resolution;
-uniform float time;
-#define FC gl_FragCoord.xy
-#define T time
-#define R resolution
-#define MN min(R.x,R.y)
-float rnd(vec2 p){p=fract(p*vec2(12.9898,78.233));p+=dot(p,p+34.56);return fract(p.x*p.y);} 
-float noise(in vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);float a=rnd(i),b=rnd(i+vec2(1,0)),c=rnd(i+vec2(0,1)),d=rnd(i+1.);return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);} 
-float fbm(vec2 p){float t=.0,a=1.;mat2 m=mat2(1.,-.5,.2,1.2);for(int i=0;i<5;i++){t+=a*noise(p);p*=2.*m;a*=.5;}return t;}
-float clouds(vec2 p){float d=1.,t=.0;for(float i=.0;i<3.;i++){float a=d*fbm(i*10.+p.x*.2+.2*(1.+i)*p.y+d+i*i+p);t=mix(t,d,a);d=a;p*=2./(i+1.);}return t;}
-void main(void){
-  vec2 uv=(FC-.5*R)/MN, st=uv*vec2(2,1);
-  vec3 col=vec3(0);
-  float bg=clouds(vec2(st.x+T*.35,-st.y));
-  uv*=1.-.3*(sin(T*.2)*.5+.5);
-  // molten gold palette: deep bronze -> amber -> honey highlight
-  vec3 bronze = vec3(0.18, 0.10, 0.03);
-  vec3 amber  = vec3(0.95, 0.62, 0.12);
-  vec3 honey  = vec3(1.00, 0.85, 0.45);
-  for(float i=1.; i<12.; i++){
-    uv+=.1*cos(i*vec2(.1+.01*i,.8)+i*i+T*.5+.1*uv.x);
-    vec2 p=uv;
-    float d=length(p);
-    float sparkle = .00125/d;
-    col += sparkle * mix(amber, honey, .5+.5*sin(i+T*.3));
-    float b=noise(i+p+bg*1.731);
-    col += .002*b/length(max(p,vec2(b*p.x*.02,p.y))) * honey;
-    col = mix(col, mix(bronze, amber, bg) * .55, d);
-  }
-  // boost contrast and clamp toward black background
-  col = pow(col, vec3(0.92));
-  O = vec4(col, 1.0);
-}`;
-
-const vertexSrc = `#version 300 es
-precision highp float;
-in vec4 position;
-void main(){gl_Position=position;}`;
 
 const Hero: React.FC<HeroProps> = ({
   trustBadge,
