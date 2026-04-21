@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 /**
- * AI Labs custom logo.
+ * Aura Infinity Labs custom logo.
  * The mark fuses a lowercase alpha (α) with a sideways infinity (∞) — one
  * continuous gold-gradient stroke. The alpha's body is the left lobe of the
  * infinity; the alpha's tail completes the right lobe.
@@ -25,7 +25,7 @@ export const Logo: React.FC<LogoProps> = ({
         viewBox="0 0 64 64"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        aria-label="AI Labs"
+        aria-label="Aura Infinity Labs"
       >
         <defs>
           <linearGradient id="aiLabsGold" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">

@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <a href="#top" aria-label="AI Labs home">
+        <a href="#top" aria-label="Aura Infinity Labs home">
           <Logo />
         </a>
 
