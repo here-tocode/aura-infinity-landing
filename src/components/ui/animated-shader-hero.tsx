@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { ShaderAnimation } from "@/components/ui/shader-lines";
 
 interface HeroProps {
   trustBadge?: { text: string };
@@ -60,87 +61,24 @@ const Hero: React.FC<HeroProps> = ({
   buttons,
   className = "",
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const fallbackRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const gl = canvas.getContext("webgl2");
-    if (!gl) {
-      // Show CSS gold fallback
-      if (fallbackRef.current) fallbackRef.current.style.opacity = "1";
-      return;
-    }
-
-    const dpr = Math.max(1, 0.5 * window.devicePixelRatio);
-    const resize = () => {
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      gl.viewport(0, 0, canvas.width, canvas.height);
-    };
-    resize();
-
-    const vs = gl.createShader(gl.VERTEX_SHADER)!;
-    gl.shaderSource(vs, vertexSrc);
-    gl.compileShader(vs);
-    const fs = gl.createShader(gl.FRAGMENT_SHADER)!;
-    gl.shaderSource(fs, goldShader);
-    gl.compileShader(fs);
-    if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) {
-      console.error(gl.getShaderInfoLog(fs));
-      if (fallbackRef.current) fallbackRef.current.style.opacity = "1";
-      return;
-    }
-    const program = gl.createProgram()!;
-    gl.attachShader(program, vs);
-    gl.attachShader(program, fs);
-    gl.linkProgram(program);
-    gl.useProgram(program);
-
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
-    const position = gl.getAttribLocation(program, "position");
-    gl.enableVertexAttribArray(position);
-    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-    const uRes = gl.getUniformLocation(program, "resolution");
-    const uTime = gl.getUniformLocation(program, "time");
-
-    let raf = 0;
-    const loop = (now: number) => {
-      gl.clearColor(0.04, 0.035, 0.027, 1);
-      gl.clear(gl.COLOR_BUFFER_BIT);
-      gl.uniform2f(uRes, canvas.width, canvas.height);
-      gl.uniform1f(uTime, now * 1e-3);
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    window.addEventListener("resize", resize);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
   return (
     <section
       className={`relative min-h-screen w-full overflow-hidden bg-matte ${className}`}
     >
-      {/* CSS fallback layer (visible if WebGL2 missing) */}
+      {/* Shader-lines background */}
+      <div className="absolute inset-0">
+        <ShaderAnimation />
+      </div>
+
+      {/* Radial vignette + bottom fade for legibility */}
       <div
-        ref={fallbackRef}
-        className="absolute inset-0 opacity-0 transition-opacity duration-700"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 30% 40%, rgba(245,158,11,0.45), transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(252,211,77,0.35), transparent 65%), #0A0907",
+            "radial-gradient(ellipse at center, rgba(10,9,7,0) 0%, rgba(10,9,7,0.55) 70%, #0A0907 100%)",
         }}
       />
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
-
-      {/* vignette */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0907]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#0A0907]" />
 
       <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 py-32 text-center">
         {trustBadge && (
