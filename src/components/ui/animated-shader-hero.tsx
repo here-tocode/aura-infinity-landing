@@ -46,15 +46,15 @@ const Hero: React.FC<HeroProps> = ({
         )}
 
         <h1 className="animate-fade-in-up animation-delay-200 text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl md:text-8xl">
-          <span className="text-gold-gradient animate-gradient block bg-clip-text">
+          <span className="block bg-gradient-to-r from-sky-300 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
             {headline.line1}
           </span>
-          <span className="text-gold-gradient animate-gradient mt-2 block bg-clip-text">
+          <span className="mt-2 block bg-gradient-to-r from-sky-300 via-blue-400 to-indigo-500 bg-clip-text text-transparent">
             {headline.line2}
           </span>
         </h1>
 
-        <p className="animate-fade-in-up animation-delay-400 mt-8 max-w-2xl text-base text-amber-100/75 sm:text-lg md:text-xl">
+        <p className="animate-fade-in-up animation-delay-400 mt-8 max-w-2xl text-base text-blue-200/80 sm:text-lg md:text-xl">
           {subtitle}
         </p>
 
@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({
             {buttons.primary && (
               <button
                 onClick={buttons.primary.onClick}
-                className="bg-gold-gradient shadow-gold rounded-full px-8 py-3.5 text-base font-semibold text-[#0A0907] transition-transform hover:scale-105"
+                className="rounded-full bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-[0_10px_30px_-10px_rgba(59,130,246,0.6)] transition-transform hover:scale-105"
               >
                 {buttons.primary.text}
               </button>
