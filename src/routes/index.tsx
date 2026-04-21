@@ -15,13 +15,13 @@ import { useReveal } from "@/hooks/use-reveal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI Labs — Ship AI-Native Products" },
+      { title: "Aura Infinity Labs — Ship AI-Native Products" },
       {
         name: "description",
         content:
-          "AI Labs builds high-converting landing pages, custom websites, AI agents, and AI automations — engineered at the speed of Claude Code & OpenAI Codex.",
+          "Aura Infinity Labs builds high-converting landing pages, custom websites, AI agents, and AI automations — engineered at the speed of Claude Code & OpenAI Codex.",
       },
-      { property: "og:title", content: "AI Labs — Ship AI-Native Products" },
+      { property: "og:title", content: "Aura Infinity Labs — Ship AI-Native Products" },
       {
         property: "og:description",
         content:
@@ -42,7 +42,7 @@ function Index() {
       <Navbar />
       <Hero
         trustBadge={{ text: "✨ Built by Claude Code & Codex power users" }}
-        headline={{ line1: "AI Labs.", line2: "Ship AI-Native Products." }}
+        headline={{ line1: "Aura Infinity Labs.", line2: "Ship AI-Native Products." }}
         subtitle="We design conversion-grade landing pages, full websites, and deploy custom AI agents & automations — engineered at the speed of Claude Code."
         buttons={{
           primary: {

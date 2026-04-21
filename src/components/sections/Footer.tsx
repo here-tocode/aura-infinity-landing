@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-amber-300/10 pt-6 text-xs text-amber-100/55 sm:flex-row">
-        <span>© 2026 AI Labs · www.aurainfinitylabs.com</span>
+        <span>© 2026 Aura Infinity Labs · www.aurainfinitylabs.com</span>
         <span>Crafted with Claude Code & OpenAI Codex.</span>
       </div>
     </footer>
