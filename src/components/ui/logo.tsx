@@ -70,10 +70,15 @@ export const Logo: React.FC<LogoProps> = ({
       </svg>
 
       {showWordmark && (
-        <div className="flex items-baseline gap-1.5 leading-none">
-          <span className="text-gold-gradient text-xl font-bold tracking-tight">AURA</span>
-          <span className="text-amber-100/80 text-xl font-light tracking-[0.25em]">
-            INFINITY LABS
+        <div className="flex flex-col leading-none">
+          <span
+            className="text-gold-gradient text-2xl font-medium italic tracking-wide"
+            style={{ fontFamily: '"Cormorant Garamond", serif', letterSpacing: "0.02em" }}
+          >
+            Aura
+          </span>
+          <span className="mt-1 text-[0.6rem] font-light uppercase tracking-[0.42em] text-amber-100/70">
+            Infinity&nbsp;Labs
           </span>
         </div>
       )}
