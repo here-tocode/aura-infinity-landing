@@ -41,7 +41,6 @@ function Index() {
     <div ref={ref} id="top" className="bg-matte min-h-screen">
       <Navbar />
       <Hero
-        trustBadge={{ text: "✨ Built by Claude Code & Codex power users" }}
         headline={{ line1: "Aura Infinity Labs.", line2: "Ship AI-Native Products." }}
         subtitle="We design conversion-grade landing pages, full websites, and deploy custom AI agents & automations — engineered at the speed of Claude Code."
         buttons={{
