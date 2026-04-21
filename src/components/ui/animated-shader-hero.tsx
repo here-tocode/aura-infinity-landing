@@ -54,7 +54,7 @@ const Hero: React.FC<HeroProps> = ({
           </span>
         </h1>
 
-        <p className="animate-fade-in-up animation-delay-400 mt-8 max-w-2xl text-base text-[#FFD700]/85 sm:text-lg md:text-xl">
+        <p className="animate-fade-in-up animation-delay-400 mt-8 max-w-2xl text-base text-[#B8860B] sm:text-lg md:text-xl">
           {subtitle}
         </p>
 
@@ -63,7 +63,7 @@ const Hero: React.FC<HeroProps> = ({
             {buttons.primary && (
               <button
                 onClick={buttons.primary.onClick}
-                className="bg-gold-gradient rounded-full px-8 py-3.5 text-base font-semibold text-[#0A0907] shadow-[0_10px_30px_-10px_rgba(255,215,0,0.6)] transition-transform hover:scale-105"
+                className="rounded-full bg-[#B8860B] px-8 py-3.5 text-base font-semibold text-[#0A0907] shadow-[0_10px_30px_-10px_rgba(184,134,11,0.6)] transition-transform hover:scale-105"
               >
                 {buttons.primary.text}
               </button>
@@ -71,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({
             {buttons.secondary && (
               <button
                 onClick={buttons.secondary.onClick}
-                className="rounded-full border border-[#FFD700]/40 bg-[#FFD700]/5 px-8 py-3.5 text-base font-semibold text-[#FFD700] backdrop-blur-md transition-colors hover:bg-[#FFD700]/10"
+                className="rounded-full border border-[#B8860B]/50 bg-[#B8860B]/5 px-8 py-3.5 text-base font-semibold text-[#B8860B] backdrop-blur-md transition-colors hover:bg-[#B8860B]/10"
               >
                 {buttons.secondary.text}
               </button>
